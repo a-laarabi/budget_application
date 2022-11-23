@@ -1,0 +1,47 @@
+<nav class="bg-[#3778C2] text-white p-1">
+  <ul class="flex justify-between items-center mr-6 mt-2">
+    <li class="text-3xl">
+      <%= link_to categories_path, class: "text-white" do %>
+        <i class="fa fa-arrow-left"></i>
+      <% end %>
+    </li>
+    <li>
+      <h2 class="font-bold text-xl pt-3">Category Details</h2>
+    </li>
+    <li class="font-bold text-4xl">
+      <%= button_to destroy_user_session_path, method: :delete do %>   
+        <i class="fa fa-sign-out"></i>
+      <% end %>
+    </li>
+  </ul>
+</nav>
+<%= render 'layouts/alerts' %>
+<%= render @category %>
+<div class="mx-6">
+  <%= button_to "Delete Category", @category, method: :delete, class: "btn btn-danger"%>
+</div>
+
+
+<h1 class="text-center font-bold text-xl mt-12">Transactions</h1>
+<div class="d-flex justify-content-end mr-6 my-3">
+  <%= link_to "New Transaction", new_category_record_path(@category), class: "btn btn-primary" %>
+</div>
+
+<% if @category.records.any? %>
+  <div class="mx-4 md:mx-48 border-solid border-1 bg-[#F5F5F5] p-4">
+    <% @category.records.order(created_at:'DESC').each do |record| %>
+      <div class="flex justify-between border-solid border-1 bg-white py-3 px-4 mb-3">
+        <div class="flex flex-col justify-center pt-1">
+          <p class="font-bold italic"><%= record.name %></p>
+          <p class="font-bold italic"><%= record.created_at.strftime("%d-%b-%Y")%></p></p>
+        </div>
+        <div class="flex flex-col">
+          <p class="font-bold">$<%= record.amount %></p>
+          <%=button_to "Delete", category_record_path(category_id: @category.id, id: record.id), method: :delete, class:"btn btn-primary px-2"%>
+        </div>
+      </div>
+    <% end %>
+  <div>
+<% else %>
+  <p class="font bold italic text-center text-base mx-6">There are no transactions to show. Please Add new Transaction</p>
+<% end %>

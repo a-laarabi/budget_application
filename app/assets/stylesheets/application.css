@@ -13,9 +13,6 @@
  *= require_tree .
  *= require_self
  */
-body {
-  background-color: #d0604c;
-}
 
  .direct-upload {
   display: inline-block;

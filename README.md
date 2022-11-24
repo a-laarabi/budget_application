@@ -22,7 +22,7 @@ The Ruby on Rails application that allows the user to:
 
 ## Live Demo
 
-[Link Live Demo]()
+[Link Live Demo](https://budgetx1.herokuapp.com/)
 
 ## Usage
 

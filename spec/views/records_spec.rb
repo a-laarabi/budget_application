@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.feature 'Record new', type: :feature do
   before(:each) do
     @user = User.create! name: 'Anasse', email: 'anasse@example.com', password: '123456'
-    @category = Category.create(name: 'entertainment', icon: fixture_file_upload('1-Entertainment.jpeg'), user_id: @user.id)
+    @category = Category.create(name: 'entertainment', icon: fixture_file_upload('1-Entertainment.jpeg'),
+                                user_id: @user.id)
 
     visit user_session_path
     fill_in 'Email', with: 'anasse@example.com'

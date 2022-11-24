@@ -14,7 +14,7 @@
  *= require_self
  */
 
- .direct-upload {
+.direct-upload {
   display: inline-block;
   position: relative;
   padding: 2px 4px;
